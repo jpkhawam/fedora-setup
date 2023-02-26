@@ -4,3 +4,4 @@ com.spotify.Client
 com.github.neithern.g4music
 com.bitwarden.desktop
 com.mattjakeman.ExtensionManager
+org.gnome.Firmware

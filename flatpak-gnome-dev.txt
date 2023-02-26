@@ -8,3 +8,6 @@ org.gnome.design.SymbolicPreview
 re.sonny.Workbench
 com.github.liferooter.textpieces
 org.gnome.design.Typography
+app.drey.Elastic
+ca.desrt.dconf-editor
+org.gnome.dspy
