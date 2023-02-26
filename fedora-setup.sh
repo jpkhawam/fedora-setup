@@ -55,7 +55,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_rust=true
 fi
 
-read -p "Improve C Development Tools and Libraries? [y/N]: " -r
+read -p "Install C Development Tools and Libraries? [y/N]: " -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_dev_utils=true
 fi
