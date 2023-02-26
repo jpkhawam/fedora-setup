@@ -1,0 +1,6 @@
+com.discordapp.Discord
+org.telegram.desktop
+com.spotify.Client
+com.github.neithern.g4music
+com.bitwarden.desktop
+com.mattjakeman.ExtensionManager

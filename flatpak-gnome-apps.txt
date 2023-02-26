@@ -1,0 +1,8 @@
+de.haeckerfelix.Shortwave
+com.github.jeromerobert.pdfarranger
+io.github.diegoivan.pdf_metadata_editor
+org.gnome.Epiphany
+org.nickvision.money
+com.github.ADBeveridge.Raider
+com.github.johnfactotum.Foliate
+de.haeckerfelix.Fragments

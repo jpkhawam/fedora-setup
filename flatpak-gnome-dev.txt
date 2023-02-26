@@ -1,0 +1,10 @@
+org.gnome.design.AppIconPreview
+org.gnome.Builder
+org.gnome.design.Palette
+org.gnome.design.Contrast
+org.gnome.Devhelp
+org.gnome.design.IconLibrary
+org.gnome.design.SymbolicPreview
+re.sonny.Workbench
+com.github.liferooter.textpieces
+org.gnome.design.Typography

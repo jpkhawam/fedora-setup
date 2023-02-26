@@ -1,0 +1,15 @@
+gnome-tweaks
+yaru-theme
+yaru-icon-theme
+yaru-sound-theme
+yaru-gtk4-theme
+yaru-gtk3-theme
+shotwell
+steam
+vlc
+neofetch
+lolcat
+papirus-icon-theme
+rhythmbox
+gnome-epub-thumbnailer
+webp-pixbuf-loader
