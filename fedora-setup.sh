@@ -15,85 +15,85 @@ update_firmware=false
 install_spicetify=false
 copy_neofetch_conf=false
 
-echo 'Install Firefox GNOME Theme? [y/N]: '
+echo -n 'Install Firefox GNOME Theme? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   firefox_gnome_theme=true
 fi
 
-echo 'Enable additional COPRs? (preload, themes, betterdiscordctl) [y/N]: '
+echo -n 'Enable additional COPRs? (preload, themes, betterdiscordctl) [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   enable_copr=true
 fi
 
-echo 'Install the adw-gtk3 theme? [y/N]: '
+echo -n 'Install the adw-gtk3 theme? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   enable_adwgtk3=true
 fi
 
-echo 'Install recommended dnf packages? [y/N]: '
+echo -n 'Install recommended dnf packages? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_dnf_packages=true
 fi
 
-echo 'Install recommended flatpaks? [y/N]: '
+echo -n 'Install recommended flatpaks? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_flatpaks=true
 fi
 
-echo 'Install recommended GNOME flatpaks? [y/N]: '
+echo -n 'Install recommended GNOME flatpaks? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_gnome_flatpaks=true
 fi
 
-echo 'Install GNOME development flatpaks? [y/N]: '
+echo -n 'Install GNOME development flatpaks? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_gnome_dev_flatpaks=true
 fi
 
-echo 'Open recommended GNOME extensions in your browser? [y/N]: '
+echo -n 'Open recommended GNOME extensions in your browser? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   open_recommended_extensions=true
 fi
 
-echo 'Improve GNOME settings? [y/N]: '
+echo -n 'Improve GNOME settings? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   improve_gnome_ux=true
 fi
 
-echo 'Install Rust? [y/N]: '
+echo -n 'Install Rust? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_rust=true
 fi
 
-echo 'Improve C Development Tools and Libraries? [y/N]: '
+echo -n 'Improve C Development Tools and Libraries? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_dev_utils=true
 fi
 
-echo 'Update system firmware (if supported)? [y/N]: '
+echo -n 'Update system firmware (if supported)? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   update_firmware=true
 fi
 
-echo 'Install Spicetify? [y/N]: '
+echo -n 'Install Spicetify? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   install_spicetify=true
 fi
 
-echo 'Copy Neofetch config? [y/N]: '
+echo -n 'Copy Neofetch config? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   copy_neofetch_conf=true
