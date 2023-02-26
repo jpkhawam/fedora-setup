@@ -45,29 +45,29 @@ flatpak install flathub de.haeckerfelix.Shortwave com.github.jeromerobert.pdfarr
 flatpak install flathub org.gnome.design.AppIconPreview org.gnome.Builder org.gnome.design.Palette org.gnome.design.Contrast org.gnome.Devhelp org.gnome.design.IconLibrary org.gnome.design.SymbolicPreview re.sonny.Workbench com.github.liferooter.textpieces org.gnome.design.Typography -y
 
 # open recommended extensions in browser
-# https://extensions.gnome.org/extension/615/appindicator-support/
-# https://extensions.gnome.org/extension/5425/battery-time/
-# https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/
-# https://extensions.gnome.org/extension/3193/blur-my-shell/
-# https://extensions.gnome.org/extension/779/clipboard-indicator/
-# https://extensions.gnome.org/extension/3843/just-perfection/
-# https://extensions.gnome.org/extension/2182/noannoyance/
-# https://extensions.gnome.org/extension/5344/supergfxctl-gex/
-# https://extensions.gnome.org/extension/1446/transparent-window-moving/
-# https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/
-# https://extensions.gnome.org/extension/19/user-themes/
-# https://extensions.gnome.org/extension/1720/weeks-start-on-monday-again/
-# https://extensions.gnome.org/extension/1319/gsconnect/
+xdg-open https://extensions.gnome.org/extension/615/appindicator-support/
+xdg-open https://extensions.gnome.org/extension/5425/battery-time/
+xdg-open https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/
+xdg-open https://extensions.gnome.org/extension/3193/blur-my-shell/
+xdg-open https://extensions.gnome.org/extension/779/clipboard-indicator/
+xdg-open https://extensions.gnome.org/extension/3843/just-perfection/
+xdg-open https://extensions.gnome.org/extension/2182/noannoyance/
+xdg-open https://extensions.gnome.org/extension/5344/supergfxctl-gex/
+xdg-open https://extensions.gnome.org/extension/1446/transparent-window-moving/
+xdg-open https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/
+xdg-open https://extensions.gnome.org/extension/19/user-themes/
+xdg-open https://extensions.gnome.org/extension/1720/weeks-start-on-monday-again/
+xdg-open https://extensions.gnome.org/extension/1319/gsconnect/
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Additional things to do:
-# Settings -> Mouse & Touchpad -> Touchpad -> Enable Natural Scrolling and Tap to Click
-# Settings -> Users -> Enable Automatic Login (if you encrypt your drive)
-# Gnome tweaks -> Fonts -> Adjust scaling factor (1.15)
-# Gnome tweaks -> Top Bar -> Enable Weekday
-# Gnome tweaks -> Window Titlebars -> Enable Maximize and Minimize
-# Gnome tweaks -> Windows -> Enable Center New Windows
-# Increase terminal font size to 14
-# Set shortcut to open terminal, to show desktop
+echo 'Additional things to do:'
+echo 'Settings -> Mouse & Touchpad -> Touchpad -> Enable Natural Scrolling and Tap to Click'
+echo 'Settings -> Users -> Enable Automatic Login (if you encrypt your drive)'
+echo 'Gnome tweaks -> Fonts -> Adjust scaling factor (1.15)'
+echo 'Gnome tweaks -> Top Bar -> Enable Weekday'
+echo 'Gnome tweaks -> Window Titlebars -> Enable Maximize and Minimize'
+echo 'Gnome tweaks -> Windows -> Enable Center New Windows'
+echo 'Increase terminal font size to 14'
+echo 'Set shortcut to open terminal, to show desktop'
