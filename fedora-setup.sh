@@ -1,108 +1,77 @@
 #!/bin/bash
 
-firefox_gnome_theme=false
-enable_copr=false
-enable_adwgtk3=false
-install_dnf_packages=false
-install_flatpaks=false
-install_gnome_flatpaks=false
-install_gnome_dev_flatpaks=false
-open_recommended_extensions=false
-improve_gnome_ux=false
-increase_scaling_factor=false
-install_rust=false
-install_dev_utils=false
-update_firmware=false
-install_spicetify=false
-copy_neofetch_conf=false
-
-echo -n 'Install Firefox GNOME Theme? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install Firefox GNOME Theme? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   firefox_gnome_theme=true
 fi
 
-echo -n 'Enable additional COPRs? (preload, themes, betterdiscordctl) [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Enable additional COPRs? (preload, themes, betterdiscordctl, better fonts) [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   enable_copr=true
 fi
 
-echo -n 'Install the adw-gtk3 theme? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install the adw-gtk3 theme? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   enable_adwgtk3=true
 fi
 
-echo -n 'Install recommended dnf packages? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install recommended dnf packages? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_dnf_packages=true
 fi
 
-echo -n 'Install recommended flatpaks? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install recommended flatpaks? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_flatpaks=true
 fi
 
-echo -n 'Install recommended GNOME flatpaks? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install recommended GNOME flatpaks? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_gnome_flatpaks=true
 fi
 
-echo -n 'Install GNOME development flatpaks? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install GNOME development flatpaks? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_gnome_dev_flatpaks=true
 fi
 
-echo -n 'Open recommended GNOME extensions in your browser? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Open recommended GNOME extensions in your browser? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   open_recommended_extensions=true
 fi
 
-echo -n 'Improve GNOME settings? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Improve GNOME settings? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   improve_gnome_ux=true
 fi
 
-echo -n 'Increase scaling factor to 1.15 (for HiDPI screens)? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Increase scaling factor to 1.15 (for HiDPI screens)? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   increase_scaling_factor=true
 fi
 
-echo -n 'Install Rust? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install Rust? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_rust=true
 fi
 
-echo -n 'Improve C Development Tools and Libraries? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Improve C Development Tools and Libraries? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_dev_utils=true
 fi
 
-echo -n 'Update system firmware (if supported)? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Update system firmware (if supported)? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   update_firmware=true
 fi
 
-echo -n 'Install Spicetify? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Install Spicetify? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   install_spicetify=true
 fi
 
-echo -n 'Copy Neofetch config? [y/N]: '
-read -r char
-if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+read -p "Copy Neofetch config? [y/N]: " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   copy_neofetch_conf=true
 fi
 
@@ -126,6 +95,11 @@ sudo dnf install lame\* --exclude=lame-devel -y
 sudo dnf group upgrade --with-optional Multimedia -y
 notify-send "Installed plugins for movies and music" --expire-time=10
 
+sudo dnf groupupdate core -y
+sudo dnf groupinstall multimedia -y
+sudo dnf groupupdate multimedia -y
+sudo dnf groupupdate sound-and-video -y
+
 # Firefox GNOME Theme
 if [ "$firefox_gnome_theme" = true ]; then
   git clone https://github.com/rafaelmardojai/firefox-gnome-theme
@@ -139,6 +113,7 @@ if [ "$enable_copr" = true ]; then
   sudo dnf copr enable elxreno/preload -y && sudo dnf install preload -y
   sudo dnf copr enable dusansimic/themes -y && sudo dnf install morewaita-icon-theme -y
   sudo dnf copr enable observeroftime/betterdiscordctl -y && sudo dnf install betterdiscordctl -y
+  sudo dnf copr enable dawid/better_fonts -y && sudo dnf install fontconfig-enhanced-defaults -y
   notify-send "Enabled additional COPRs" --expire-time=10
 fi
 
