@@ -9,6 +9,7 @@ install_gnome_flatpaks=false
 install_gnome_dev_flatpaks=false
 open_recommended_extensions=false
 improve_gnome_ux=false
+increase_scaling_factor=false
 install_rust=false
 install_dev_utils=false
 update_firmware=false
@@ -69,6 +70,12 @@ if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
   improve_gnome_ux=true
 fi
 
+echo -n 'Increase scaling factor to 1.15 (for HiDPI screens)? [y/N]: '
+read -r char
+if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
+  increase_scaling_factor=true
+fi
+
 echo -n 'Install Rust? [y/N]: '
 read -r char
 if [[ "$char" == "Y" ]] || [[ "$char" == "y" ]]; then
@@ -124,7 +131,7 @@ if [ "$firefox_gnome_theme" = true ]; then
   git clone https://github.com/rafaelmardojai/firefox-gnome-theme
   bash ~/firefox-gnome-theme/scripts/auto-install.sh
   rm -rf ~/firefox-gnome-theme
-  notify-send "Installed Firefox GNOME Theme" --expire-time=10fi
+  notify-send "Installed Firefox GNOME Theme" --expire-time=10
 fi
 
 # Additional COPRs
@@ -193,10 +200,14 @@ if [ "$improve_gnome_ux" = true ]; then
   gsettings set org.gnome.desktop.interface clock-show-date true
   gsettings set org.gnome.desktop.interface clock-show-seconds false
   gsettings set org.gnome.desktop.interface show-battery-percentage true
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
   gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
   gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
   notify-send "Improved GNOME's settings" --expire-time=10
+fi
+
+# Increase scaling factor
+if [ "$increase_scaling_factor" = true ]; then
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
 fi
 
 # Install Rust
