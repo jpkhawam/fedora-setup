@@ -101,3 +101,7 @@ notify-send "Updated firmware" --expire-time=10
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
 notify-send "Installed Spicetify" --expire-time=10
+
+# Neofetch config
+mv ~/.config/neofetch/config.conf ~/.config/neofetch/[BACKUP]config.conf
+cp neofetch-config.conf ~/.config/neofetch/config.conf
