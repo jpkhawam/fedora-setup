@@ -75,11 +75,30 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   copy_neofetch_conf=true
 fi
 
+# Improve GNOME's UX
+if [ "$improve_gnome_ux" = true ]; then
+  gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+  gsettings set org.gnome.mutter center-new-windows true
+  gsettings set org.gnome.desktop.interface clock-show-weekday true
+  gsettings set org.gnome.desktop.interface clock-format '12h'
+  gsettings set org.gnome.desktop.interface clock-show-date true
+  gsettings set org.gnome.desktop.interface clock-show-seconds false
+  gsettings set org.gnome.desktop.interface show-battery-percentage true
+  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+  gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+  notify-send "Improved GNOME's settings" --expire-time=10
+fi
+
+# Increase scaling factor
+if [ "$increase_scaling_factor" = true ]; then
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
+fi
+
 sudo dnf update --refresh -y
 notify-send "Updated your system successfully" --expire-time=10
 
 # Enable flathub
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 notify-send "Enabled Flathub" --expire-time=10
 
 # Enable RPM Fusion repositories
@@ -100,14 +119,6 @@ sudo dnf groupinstall multimedia -y
 sudo dnf groupupdate multimedia -y
 sudo dnf groupupdate sound-and-video -y
 
-# Firefox GNOME Theme
-if [ "$firefox_gnome_theme" = true ]; then
-  git clone https://github.com/rafaelmardojai/firefox-gnome-theme
-  bash ~/firefox-gnome-theme/scripts/auto-install.sh
-  rm -rf ~/firefox-gnome-theme
-  notify-send "Installed Firefox GNOME Theme" --expire-time=10
-fi
-
 # Additional COPRs
 if [ "$enable_copr" = true ]; then
   sudo dnf copr enable elxreno/preload -y && sudo dnf install preload -y
@@ -120,7 +131,7 @@ fi
 # Install adw-gtk3 GTK3 Theme
 if [ "$enable_adwgtk3" = true ]; then
   sudo dnf copr enable nickavem/adw-gtk3 -y && sudo dnf install adw-gtk3 -y
-  flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+  flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark -y
   gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
   notify-send "Installed adw-gtk3 theme" --expire-time=10
 fi
@@ -166,23 +177,20 @@ if [ "$open_recommended_extensions" = true ]; then
   done
 fi
 
-# Improve the GNOME UX
-if [ "$improve_gnome_ux" = true ]; then
-  gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-  gsettings set org.gnome.mutter center-new-windows true
-  gsettings set org.gnome.desktop.interface clock-show-weekday true
-  gsettings set org.gnome.desktop.interface clock-format '12h'
-  gsettings set org.gnome.desktop.interface clock-show-date true
-  gsettings set org.gnome.desktop.interface clock-show-seconds false
-  gsettings set org.gnome.desktop.interface show-battery-percentage true
-  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-  gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
-  notify-send "Improved GNOME's settings" --expire-time=10
+# Neofetch config
+if [ "$copy_neofetch_conf" = true ]; then
+  neofetch
+  mv ~/.config/neofetch/config.conf ~/.config/neofetch/[BACKUP]config.conf
+  cp neofetch-config.conf ~/.config/neofetch/config.conf
+  neofetch
 fi
 
-# Increase scaling factor
-if [ "$increase_scaling_factor" = true ]; then
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
+# Firefox GNOME Theme
+if [ "$firefox_gnome_theme" = true ]; then
+  git clone https://github.com/rafaelmardojai/firefox-gnome-theme
+  bash firefox-gnome-theme/scripts/auto-install.sh
+  rm -rf firefox-gnome-theme
+  notify-send "Installed Firefox GNOME Theme" --expire-time=10
 fi
 
 # Install Rust
@@ -193,7 +201,7 @@ fi
 
 # Install Dev utils
 if [ "$install_dev_utils" = true ]; then
-  sudo dnf group install C Development Tools and Libraries -y
+  sudo dnf group install "C Development Tools and Libraries" -y
   notify-send "Installed group C Development Tools and Libraries" --expire-time=10
 fi
 
@@ -211,10 +219,4 @@ if [ "$install_spicetify" = true ]; then
   curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
   curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
   notify-send "Installed Spicetify" --expire-time=10
-fi
-
-# Neofetch config
-if [ "$copy_neofetch_conf" = true ]; then
-  mv ~/.config/neofetch/config.conf ~/.config/neofetch/[BACKUP]config.conf
-  cp neofetch-config.conf ~/.config/neofetch/config.conf
 fi

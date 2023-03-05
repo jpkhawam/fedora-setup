@@ -7,9 +7,6 @@ com.github.ADBeveridge.Raider
 com.github.johnfactotum.Foliate
 de.haeckerfelix.Fragments
 com.raggesilver.BlackBox
-org.gnome.SoundRecorder
 org.gnome.World.PikaBackup
 org.gnome.Geary
-org.gnome.Crosswords
-org.gnome.Sudoku
-org.gnome.Mines
+
