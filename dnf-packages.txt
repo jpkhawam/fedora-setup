@@ -13,3 +13,4 @@ papirus-icon-theme
 rhythmbox
 gnome-epub-thumbnailer
 webp-pixbuf-loader
+gnome-pomodoro
