@@ -94,6 +94,9 @@ if [ "$increase_scaling_factor" = true ]; then
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
 fi
 
+# enable Firefox wayland
+echo "MOZ_ENABLE_WAYLAND=1" >> /etc/environment
+
 sudo dnf update --refresh -y
 notify-send "Updated your system successfully" --expire-time=10
 
