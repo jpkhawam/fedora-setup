@@ -11,3 +11,7 @@ https://extensions.gnome.org/extension/5506/user-avatar-in-quick-settings/
 https://extensions.gnome.org/extension/19/user-themes/
 https://extensions.gnome.org/extension/1720/weeks-start-on-monday-again/
 https://extensions.gnome.org/extension/1319/gsconnect/
+https://extensions.gnome.org/extension/3733/tiling-assistant/
+https://extensions.gnome.org/extension/4269/alphabetical-app-grid/
+https://extensions.gnome.org/extension/5306/firefox-pip-always-on-top/
+https://extensions.gnome.org/extension/2986/runcat/
