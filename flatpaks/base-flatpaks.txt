@@ -1,0 +1,5 @@
+com.discordapp.Discord
+com.mattjakeman.ExtensionManager
+com.raggesilver.BlackBox
+com.spotify.Client
+org.telegram.desktop

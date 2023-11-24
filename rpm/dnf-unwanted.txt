@@ -1,0 +1,8 @@
+gnome-boxes
+gnome-connections
+gnome-contacts
+gnome-maps
+gnome-photos
+gnome-tour
+libreoffice-impress
+mediawriter

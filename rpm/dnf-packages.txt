@@ -1,0 +1,9 @@
+cascadia-fonts-all
+gnome-epub-thumbnailer
+gnome-pomodoro
+gnome-shell-extension-appindicator
+gnome-tweaks
+neofetch
+nodejs
+papirus-icon-theme
+webp-pixbuf-loader
