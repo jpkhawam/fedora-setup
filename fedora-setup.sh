@@ -19,6 +19,10 @@ declare -A prompt_var_map=(
   ["Set DNF fastestmirror to true?"]="dnf_fastest_mirror"
   ["Remove unneeded packages?"]="remove_unwanted_packages"
   ["Adjust clock for dual booting with Windows?"]="set_local_rtc"
+  ["Enable Flathub? (if not enabled)"]="enable_flathub"
+  ["Add RPM Fusion repositories (for non free software)?"]="add_rpm_fusion"
+  ["Remove Google Chrome and PyCharm repositories?"]="remove_unwanted_repos"
+  ["Install plugins for movies and music?"]="multimedia_plugins"
   ["Enable additional COPRs? (preload, themes, better fonts)"]="enable_copr"
   ["Install the adw-gtk3 theme?"]="enable_adwgtk3"
   ["Install Nvidia drivers?"]="install_nvidia_drivers"
@@ -28,12 +32,14 @@ declare -A prompt_var_map=(
   ["Install C Development Tools and Libraries?"]="install_dev_utils"
   ["Update system firmware (if supported)?"]="update_firmware"
   ["Install recommended flatpaks?"]="install_flatpaks"
-  ["Install steam (as flatpak) and steam-devices package?"]="install_steam"
+  ["Install steam (flatpak) and steam-devices package (dnf)?"]="install_steam"
   ["Install extra flatpaks?"]="install_extra_flatpaks"
   ["Install GNOME development flatpaks?"]="install_gnome_dev_flatpaks"
   ["Open recommended GNOME extensions in your browser?"]="open_recommended_extensions"
   ["Copy Neofetch config?"]="copy_neofetch_conf"
   ["Install Firefox GNOME Theme?"]="firefox_gnome_theme"
+  ["Install Starship terminal prompt?"]="install_starship"
+  ["Install Bun?"]="install_bun"
   ["Install Rust?"]="install_rust"
 )
 
@@ -66,26 +72,31 @@ if [ "$set_local_rtc" = true ]; then
   timedatectl set-local-rtc 1
 fi
 
-# Enable Firefox wayland
-echo 'MOZ_ENABLE_WAYLAND=1' | sudo tee -a /etc/environment
-
 # Enable flathub
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+if [ "$enable_flathub" = true ]; then
+  sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
 
-# Enable RPM Fusion repositories
-sudo dnf install \
+# Add RPM Fusion repositories
+if [ "$add_rpm_fusion" = true ]; then
+  sudo dnf install \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
-sudo dnf install \
+  sudo dnf install \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+fi
 
-# remove unwanted repos
-sudo rm /etc/yum.repos.d/google-chrome.repo
-sudo rm /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.repo
+# Remove Google Chrome and PyCharm repos
+if [ "$remove_unwanted_repos" = true ]; then
+  sudo rm /etc/yum.repos.d/google-chrome.repo
+  sudo rm /etc/yum.repos.d/_copr\:copr.fedorainfracloud.org\:phracek\:PyCharm.repo
+fi
 
 # Install plugins for movies and music
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude={gstreamer1-plugins-bad-free-devel,proj-data-*} -y
-sudo dnf install lame\* --exclude=lame-devel -y
-sudo dnf group upgrade --with-optional Multimedia --allowerasing -y
+if [ "$multimedia_plugins" = true ]; then
+  sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude={gstreamer1-plugins-bad-free-devel,proj-data-*} -y
+  sudo dnf install lame\* --exclude=lame-devel -y
+  sudo dnf group upgrade --with-optional Multimedia --allowerasing -y
+fi
 
 # Additional COPRs
 if [ "$enable_copr" = true ]; then
@@ -178,11 +189,8 @@ fi
 
 # Firefox GNOME Theme
 if [ "$firefox_gnome_theme" = true ]; then
-  git clone https://github.com/rafaelmardojai/firefox-gnome-theme &&
-  cd firefox-gnome-theme &&
-  source ./scripts/auto-install.sh &&
-  cd .. &&
-  rm -rf firefox-gnome-theme &&
+  curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash &&
+  firefox &&
   echo 'user_pref("gnomeTheme.bookmarksToolbarUnderTabs", true);' >> .mozilla/firefox/*-release/prefs.js
 fi
 
@@ -198,8 +206,18 @@ if [ "$copy_neofetch_conf" = true ]; then
   neofetch
 fi
 
+# Install Starship
+if [ "$install_starship" = true ]; then
+  curl -sS https://starship.rs/install.sh | sh
+  echo 'eval "$(starship init bash)"' >> ~/.bashrc
+fi
+
+# Install Bun
+if [ "$install_bun" = true ]; then
+  curl -fsSL https://bun.sh/install | bash
+fi
+
 # Install Rust
-# requires manual input
 if [ "$install_rust" = true ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
