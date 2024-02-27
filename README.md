@@ -2,7 +2,8 @@
 
 This script automates my Fedora installs to configure them the way I usually set up the distro. Most these changes shouldn't be unconventional.
 
-> ***[-Most of the configuration is tailored to my personal liking. Double check the content of all the files in the repo before running this on any system.-]***
+> [!CAUTION]
+> ***Most of the configuration is tailored to my personal liking. Double check the content of all the files in the repo before running this on any system.***
 
 
 #### You can choose to execute any combination of the following
@@ -35,7 +36,7 @@ This script automates my Fedora installs to configure them the way I usually set
 1. Clone this repo and navigate to directory:
 
 	```sh
-	git clone https://gitlab.com/moralpanic/fedora-setup && cd fedora-setup
+	git clone https://github.com/jpkhawam/fedora-setup && cd fedora-setup
 	```
 
 2. Run installation script
