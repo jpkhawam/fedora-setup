@@ -1,6 +1,10 @@
-# Fedora Setup Script
+# Fedora Post-install Setup
 
-This script automates my Fedora installs to configure them the way I usually set up the distro. Most these changes shouldn't be unconventional.
+![screenshot of CLI with all the different options presented by the script](./screenshot.png)
+
+This script represents the steps I usually take to configure my Fedora installs. Most these changes shouldn't be unconventional.\
+Credit to [@smittix](https://github.com/smittix)'s [fedorable](https://github.com/smittix/fedorable) script for inspiring me to rewrite this using `dialog`.
+
 
 > [!CAUTION]
 > ***Most of the configuration is tailored to my personal liking. Double check the content of all the files in the repo before running this on any system.***

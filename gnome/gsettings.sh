@@ -24,24 +24,5 @@ gsettings set org.gnome.settings-daemon.plugins.power.power-button-action 'nothi
 gsettings set org.gnome.settings-daemon.plugins.power.sleep-inactive-ac-type 'nothing'
 gsettings set org.gnome.settings-daemon.plugins.power.sleep-inactive-battery-type 'nothing'
 
-# GNOME Text Editor settings
-gsettings set org.gnome.TextEditor.use-system-font false
-gsettings set org.gnome.TextEditor.highlight-current-line true
-gsettings set org.gnome.TextEditor.restore-session false
-gsettings set org.gnome.TextEditor.show-line-numbers true
-gsettings set org.gnome.TextEditor.show-map true
-gsettings set org.gnome.TextEditor.spellcheck false
-gsettings set org.gnome.TextEditor.style-scheme 'builder-dark'
-gsettings set org.gnome.TextEditor.custom-font 'Monospace 14'
-
-# GWeather4 settings
-gsettings set org.gnome.GWeather4.temperature-unit 'centigrade'
-gsettings set org.gnome.GWeather4.speed-unit 'kph'
-gsettings set org.gnome.GWeather4.distance-unit 'km'
-
 # Keyboard Shortcuts
 gsettings set org.gnome.desktop.wm.keybindings.show-desktop "['<Super>d']"
-
-if [[ $1 = "true" ]]; then
-  gsettings set org.gnome.desktop.interface text-scaling-factor 1.15
-fi
