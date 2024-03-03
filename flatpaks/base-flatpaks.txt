@@ -3,3 +3,6 @@ com.mattjakeman.ExtensionManager
 com.raggesilver.BlackBox
 com.spotify.Client
 org.telegram.desktop
+io.github.celluloid_player.Celluloid
+com.github.neithern.g4music
+org.gnome.Shotwell
